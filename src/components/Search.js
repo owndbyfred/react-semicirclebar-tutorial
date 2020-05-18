@@ -32,38 +32,42 @@ const Search = ({ location }) => {
 
   return (
     <>
-      <div className='bg-dark text-light'>
-        <div className='container pt-5' style={{ height: '100vh' }}>
-          <Link to='/' className='btn btn-success mb-5'>
-            &#11207; Back to Home
-          </Link>
-          <h1>{language}</h1>
-          <p>
-            <span className='text-info'>{language} </span>is a very cool
-            programming language. It's used by many developers from all around
-            the world. Every programmer should have heard of{' '}
-            <span className='text-info'>{language} </span>before.
-          </p>
+      <Link to='/' className='btn btn-success mb-5'>
+        &#11207; Back to Home
+      </Link>
+      <h1>
+        {language}{' '}
+        <Link
+          to={'/details/' + language}
+          className='btn btn-outline-info btn-sm'
+        >
+          Details
+        </Link>
+      </h1>
+      <p>
+        <span className='text-info'>{language} </span>is a very cool programming
+        language. It's used by many developers from all around the world. Every
+        programmer should have heard of{' '}
+        <span className='text-info'>{language} </span>before.
+      </p>
 
-          <form onSubmit={submitAction} className='mt-5'>
-            <div className='input-group'>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Type language...'
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
+      <form onSubmit={submitAction} className='mt-5'>
+        <div className='input-group'>
+          <input
+            type='text'
+            className='form-control'
+            placeholder='Type language...'
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
 
-              <div className='input-group-append'>
-                <button className='btn btn-primary' type='submit'>
-                  Go!
-                </button>
-              </div>
-            </div>
-          </form>
+          <div className='input-group-append'>
+            <button className='btn btn-primary' type='submit'>
+              Go!
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </>
   );
 };
