@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReviewsBar from './reviews/ReviewsBar';
 
 const DetailInformation = (props) => {
   // extract language from props
@@ -7,6 +8,7 @@ const DetailInformation = (props) => {
   const [rank, setRank] = useState('');
   const [year, setYear] = useState('');
   const [inventor, setInventor] = useState('');
+  const [reviewScore, setReviewScore] = useState(10);
 
   // simulate an api call
   const fetchContent = () => {
@@ -16,21 +18,25 @@ const DetailInformation = (props) => {
         setRank('3');
         setYear('1995');
         setInventor('Brendan Eich');
+        setReviewScore(70);
         break;
       case 'java':
         setRank('1');
         setYear('1995');
         setInventor('James Gosling');
+        setReviewScore(75);
         break;
       case 'python':
         setRank('2');
         setYear('1990');
         setInventor('Guido van Rossum');
+        setReviewScore(80);
         break;
       default:
         setRank('n/a');
         setYear('n/a');
         setInventor('n/a');
+        setReviewScore(10);
         break;
     }
   };
@@ -54,6 +60,15 @@ const DetailInformation = (props) => {
           Published in: <b>{year}</b>
         </li>
       </ul>
+      <h3>Reviews</h3>
+      <div className='row mt-3'>
+        <div className='col-md-2'>
+          <ReviewsBar score={reviewScore} />
+        </div>
+        <div className='col-md-10 d-flex align-items-center'>
+          of programmers love working with {lang}.
+        </div>
+      </div>
     </>
   );
 };
